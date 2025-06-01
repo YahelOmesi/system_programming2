@@ -1,0 +1,92 @@
+# CPP_EX3 – COUP GAME
+
+## Game Overview
+This project implements a strategic turn-based game inspired by Coup. The game is designed for 2 to 6 players, each assigned a role with unique abilities. Players aim to eliminate others through deception, strategy, and smart use of coins — until one remains standing.
+
+A simple GUI was added using `GameWindow.cpp`.
+
+## game actions
+1. Gather - The player receives one coin from the stockpile. 
+2. Tax - The player receives two coins from the stockpile.
+3. Bribe - The player pays 4 coins to perform another action on his turn.
+4. Arrest - The player chooses another player and takes 1 coin from him. It cannot be used on the same player twice in a row.
+5. Sanction - The player chooses another player and prevents him from using economic actions (gather, tax) until his next turn. COST: 3 coins.
+6. Coup - The player chooses another player and completely removes him from the game. COST: 7 coins.
+
+## roles & unique abilities
+
+governor:
+1. Gets 3 coins in tax instead of 2.
+2. Can cancel others' taxes.
+
+Spy:
+1. Can see the amount of coins of others.
+2. Can prevent a player from using the arrest action on his next turn.
+
+Baron:
+1. Can invest 3 coins and get back 6.
+2. If attacked with a sanction, receives a coin as compensation.
+
+General:
+1. Can prevent a Coup against someone by paying 5 coins.
+
+Judge:
+1. Can cancel a bribe.
+2. If attacked with a sanction, the player who imposed the boycott must pay an additional coin to the cash register.
+
+Merchant:
+1. If he starts a turn with at least 3 coins, he will receive an additional coin for free.
+2. If attacked with an arrest, he pays 2 coins to the cash register instead of losing 1 to another player.
+
+
+## Important Notes!
+- If a player holds **10 coins** at the beginning of their turn, they **must perform a Coup**.
+- Players **cannot have the same name**.
+- The game **cannot start** with fewer than 2 players.
+- The game **does not allow more than 6 players**.
+- There **can be multiple players with the same role**.  
+  In the GUI, I chose 6 different roles to demonstrate their variety.
+
+## Notes about the GUI
+- At the bottom of the screen, each player has an ID bar showing their name and role.  
+  A **gray ID** indicates the player was eliminated.
+- The **current player's name and role** appear at the top of the screen.
+- At the **end of the game**, the winner is announced and the window automatically closes after 5 seconds.
+
+To run the GUI I used the following commands:
+
+First step:
+g++ GameWindow.cpp Game.cpp Player.cpp RoleBase.cpp Spy.cpp Judge.cpp Baron.cpp General.cpp Governor.cpp Merchant.cpp Actions.cpp -o game_gui -lsfml-graphics -lsfml-window -lsfml-system
+
+Second step:
+./game_gui
+
+## File Structure
+- `main.cpp` – Entry point of the program.
+- `Game.hpp / Game.cpp` – Controls the state and logic of the game.
+- `Player.hpp / Player.cpp` – Represents each player in the game.
+- `RoleBase.hpp / RoleBase.cpp` – Abstract base class for all roles.
+- `Spy / Judge / General / Governor / Merchant / Baron` – Role classes inheriting from `RoleBase`.
+- `Actions.hpp / Actions.cpp` – Contains static functions for each possible player action.
+- `GameWindow.cpp` – Responsible for displaying a minimal visual interface.
+- `test.cpp` – Contains tests using the doctest framework.
+- `makefile` – Compiles the entire project.
+- `doctest.h` – Header-only testing library.
+
+I tried to keep the code clean and readable by using clear visual separation between different sections.
+To do this, I added comment lines using \\ to mark the beginning of each logical block (e.g., actions, role handling, turn logic, etc.).
+This helped me stay organized during development and makes it easier to navigate the code.
+
+
+## Makefile Commands
+You can use the following commands to build, test, and debug the project:
+
+    make main – Compiles the project and creates the main executable to run the game.
+
+    make test – Compiles and runs all test cases using the doctest framework.
+
+    make valgrind – Runs memory checks on the executable using valgrind (make sure you have it installed).
+
+    make clean – Removes all compiled files and executables.
+
+    Use these commands from the project’s root directory in your terminal.
