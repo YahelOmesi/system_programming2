@@ -140,7 +140,7 @@ int main() {
  
     //the winner should be judge
     cout << "\n====== GAME OVER ======\n";
-    cout << "🏆 Winner: " << game.winner() << " 🏆\n";
+    cout << "Winner: " << game.winner() << " \n";
     printStatus(game);
 
     return 0;
