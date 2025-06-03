@@ -159,7 +159,6 @@ int main() {
                         }
                     }
 
-                    // ✔️ בדיקת כפתורי פעולות מיוחדות (Invest וכו)
                     const auto& players = game.getAllPlayers();
                     float cardW = 150, gap = 10, y = 600;
                     float totalWidth = players.size() * cardW + (players.size() - 1) * gap;
@@ -202,7 +201,6 @@ int main() {
             }
         }
 
-        // ציור:
         window.clear(sf::Color(238, 232, 170));
         auto current = game.getCurrentPlayer();
         sf::Text turnText("Current Turn: " + current->getName() + " (Role: " + roleToString(current->getRole()) + ")", font, 24);
