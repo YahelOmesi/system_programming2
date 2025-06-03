@@ -1,4 +1,4 @@
-// 👇 כאן יופיע הקובץ במלואו (משתמשת ביקשה הכל בפנים)
+//yahelomessi@gmail.com
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -48,7 +48,7 @@ int main() {
 
     sf::Font font;
     if (!font.loadFromFile("Marcellus-Regular.ttf")) {
-        cerr << "❌ Could not load font!" << endl;
+        cerr << "Could not load font!" << endl;
         return -1;
     }
 
@@ -63,7 +63,7 @@ int main() {
         const string& name = actions[i];
         sf::Texture texture;
         if (!texture.loadFromFile("images/" + name + ".png")) {
-            cerr << "❌ Failed to load image: " << name << endl;
+            cerr << "Failed to load image: " << name << endl;
             return -1;
         }
         actionTextures[name] = texture;
