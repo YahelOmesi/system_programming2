@@ -20,7 +20,7 @@ A simple graphical interface was implemented to visualize gameplay and player st
 - Modular, object-oriented architecture  
 - Basic GUI for game visualization  
 
-## 🎮 Game Mechanics (Summary)
+## 🎮 Game Mechanics
 Players can perform actions such as gathering resources, taxing, bribing, sanctioning, arresting, and executing coups.  
 Special roles (Governor, Spy, Baron, General, Judge, Merchant) introduce additional mechanics that affect gameplay dynamics.
 
